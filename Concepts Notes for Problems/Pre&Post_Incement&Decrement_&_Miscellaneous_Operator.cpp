@@ -1,21 +1,28 @@
 // Operators
 
-
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    // pre-increment & post-increment operators
+    // post-increment & pre-increment operators
     int i = 1;
+    int j = 10;
+
     i = i++ + ++i; // {i=1} (then i=2 post) + (pre, i=2+1) {i=3}
  // i = 1 + 3
 
     cout << i;
 
+    cout << endl;
+
+    // post-decrement & pre-decrement operators
+    j = j-- + --j; // {j=10} (then j=9 post) + (pre, j=9-1) {j=8}
+ // j = 10 + 8
+    cout << j;
+
     return 0;
 }
-
 
 // MISCELLANEOUS OPERATORS :
 
