@@ -28,8 +28,8 @@ int main()
         {
             for (int a = 1; a < i; a++)
             {
-                cout << "*" << " ";
-                cout << "*" << " ";
+                cout << "*" << " " << "*" << " ";
+                // cout << "*" << " ";
             }
             break;
         }
