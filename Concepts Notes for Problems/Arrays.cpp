@@ -1,3 +1,9 @@
+/*
+
+Array is a collection of same type of data
+
+*/
+
 #include<iostream>
 using namespace std;
 
@@ -50,3 +56,9 @@ int main()
     
 
 }
+
+/*
+
+     Similarly we can define arrays of type CHAR, DOUBLE, FLOAT, BOOL
+
+*/
