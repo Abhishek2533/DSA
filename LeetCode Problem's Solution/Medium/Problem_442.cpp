@@ -38,12 +38,12 @@ class Solution
 public:
     vector<int> findDuplicates(vector<int> &nums)
     {
-        vector<int> ans;
+        vector<int> ans;        // way to create a vector
         for (int i = 0; i < nums.size(); i++)
         {
             if (nums[abs(nums[i]) - 1] < 0)
             {
-                ans.push_back(abs(nums[i]));
+                ans.push_back(abs(nums[i]));        // way to insert in vector created
             }
             nums[abs(nums[i]) - 1] *= -1;
         }
@@ -61,13 +61,13 @@ public:
     vector<int> findDuplicates(vector<int> &nums)
     {
 
-        vector<int> ans;
+        vector<int> ans;        // way to create a vector
         sort(nums.begin(), nums.end());
         for (int i = 1; i < nums.size(); i++)
         {
             if (nums[i] == nums[i - 1])
             {
-                ans.push_back(nums[i]);
+                ans.push_back(nums[i]);     // way to insert in vector created
             }
         }
 
