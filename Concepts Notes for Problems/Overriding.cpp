@@ -1,4 +1,4 @@
-// This is Compile-time polymorphism  /  static polymorphism
+// This is Run-time polymorphism  /  dynamic polymorphism
 // Overriding   -> depends on inheritance
 
 #include <iostream>

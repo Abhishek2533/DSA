@@ -50,6 +50,7 @@
         "format": "cpp",
         "chrono": "cpp",
         "ranges": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "span": "cpp"
     }
 }
