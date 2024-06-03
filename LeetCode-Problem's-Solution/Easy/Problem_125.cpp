@@ -25,58 +25,32 @@ Output: true
 
 */
 
-
-
 // SOURCE CODE
 
-class Solution {
-private:
-    bool valid(char ch) {
-        if( (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9') ) {
-            return 1;
-        }
-        return 0;
-    }
-    char toLowerCase(char s) {
-    if (s >= 'A' && s <= 'Z')
-    {
-        return s - 'A' + 'a';
-    }
-    return s;
-    }
-
-    bool checkPalindrome(string a) {
-        int start = 0;
-        int end = a.length() - 1;
-
-        while (start <= end) {
-                if (a[start] != a[end]) {
-                    return 0;
-                }
-                else {
-                    start++;
-                    end--;
-                }
-            }
-        return 1;
-    }
+class Solution
+{
 public:
-    bool isPalindrome(string s) {
-
-        // removing unnecessary
-        string temp = "";
-
-        for(int j = 0; j<s.length(); j++) {
-            if(valid( s[j] )) {
-                temp.push_back(s[j]);
+    bool isPalindrome(string s)
+    {
+        string result;
+        for (char c : s)
+        {
+            if (isalnum(c))
+            {
+                result += tolower(c);
             }
         }
+        return isPalindromeHelper(result, 0);
+    }
 
-        // convert to lowercase
-        for(int j = 0; j<temp.length(); j++) {
-                temp[j] = toLowerCase(temp[j]);
-        }
-        // check palindrome
-        return checkPalindrome(temp);
+private:
+    bool isPalindromeHelper(string &s, int i)
+    {
+        int n = s.length();
+        if (i >= n / 2)
+            return true;
+        if (s[i] != s[n - i - 1])
+            return false;
+        return isPalindromeHelper(s, i + 1);
     }
 };
