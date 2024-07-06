@@ -14,7 +14,7 @@ Output: ["o","l","l","e","h"]
 Example 2:
 Input: s = ["H","a","n","n","a","h"]
 Output: ["h","a","n","n","a","H"]
- 
+
 
 Constraints:
 1 <= s.length <= 105
@@ -22,16 +22,18 @@ s[i] is a printable ascii character.
 
 */
 
+// SOURCE CODE
 
-
-class Solution {
+class Solution
+{
 public:
-    void reverseString(vector<char>& s) {
-        int start = 0, end = s.size()-1;
+    void reverseString(vector<char> &s)
+    {
+        int start = 0, end = s.size() - 1;
 
         while (start < end)
         {
-            swap(s[start++],s[end--]);
+            swap(s[start++], s[end--]);
         }
     }
 };
