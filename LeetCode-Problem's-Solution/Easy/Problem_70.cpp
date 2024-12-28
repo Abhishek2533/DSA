@@ -31,30 +31,75 @@ Constraints: 1 <= n <= 45
 
 // SOURCE CODE
 
-class Solution
-{
+
+// RECURSIVE
+
+class Solution {
 public:
-    int climbStairs(int n)
-    {
-        int initial = 0;
-        int prev1 = 1;
-        int prev2 = 2;
-        int curr;
+    int climbStairs(int n) {
+        if(n==1 || n==2) return n;
+        return climbStairs(n-1)+climbStairs(n-2);
+    }
+};
 
-        if (n == 0)
-            return initial;
-        if (n == 1)
-            return prev1;
-        if (n == 2)
-            return prev2;
 
-        for (int i = 3; i <= n; i++)
-        {
-            curr = prev1 + prev2;
-            initial = prev1;
-            prev1 = prev2;
-            prev2 = curr;
+
+
+// MEMOIZATION
+
+class Solution {
+public:
+    vector<int> t;
+    Solution(): t(46, -1) {}
+
+    int climbStairs(int n) {
+        if(t[n] != -1) return t[n];
+        if(n==1 || n==2) return n;
+        t[n] = climbStairs(n-1)+climbStairs(n-2);
+        return t[n];
+    }
+};
+
+
+
+
+
+// BOTTOM - UP
+
+class Solution {
+public:
+    int climbStairs(int n) {
+        if(n==1 || n==2) return n;
+        vector<int> dp(n+1);
+        dp[1] = 1;
+        dp[2] = 2;
+        dp[3] = 3;
+        for (int i = 4; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
         }
-        return curr;
+
+        return dp[n];
+    }
+};
+
+
+
+
+
+// BOTTOM - UP (OPTIMIZE)
+
+class Solution {
+public:
+    int climbStairs(int n) {
+        if (n==1 || n==2 || n==3) return n;
+
+        int prev1=3, prev2=2;
+        for(int i=4; i<=n; i++) {
+            int curr = prev1+prev2;
+            prev2=prev1;
+            prev1=curr;
+        }
+
+        return prev1;
     }
 };

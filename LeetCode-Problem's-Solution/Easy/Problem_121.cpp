@@ -28,6 +28,37 @@ Constraints:
 
 // SOURCE CODE
 
+
+
+
+// RECURSIVE
+
+class Solution
+{
+public:
+    int solve(vector<int> &prices, int i)
+    {
+        if (i == 2)
+            return prices[i - 1] - prices[i - 2];
+        int mini = *min_element(prices.begin(), prices.begin() + i - 1);
+        int profit = prices[i - 1] - mini;
+        return max(profit, solve(prices, i - 1));
+    }
+    int maxProfit(vector<int> &prices)
+    {
+        if (prices.size() == 1)
+            return 0;
+        int ans = 0;
+        return max(ans, solve(prices, prices.size()));
+    }
+};
+
+
+
+
+
+// NON - RECURSIVE
+
 class Solution
 {
 public:
@@ -49,5 +80,22 @@ public:
         }
 
         return maxProfit;
+    }
+};
+
+
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int mini=prices[0], profit=0;
+        for(int i=1; i<n; i++) {
+            int temp = prices[i] - mini;
+            profit=max(profit, temp);
+            mini = min(mini, prices[i]);
+        }
+
+        return profit;
     }
 };
