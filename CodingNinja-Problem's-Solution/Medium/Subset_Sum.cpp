@@ -1,3 +1,21 @@
+// RECURSIVE
+
+bool solve(vector<int>& a, int target, int i) {
+    if(target == 0) return true;
+    if(target > 0 && i==a.size()) return false;
+    
+    if(a[i]<= target) return solve(a, target-a[i], i+1) || solve(a, target, i+1);
+    return solve(a, target, i+1);
+}
+
+bool isSubsetPresent(int n, int k, vector<int>& a) {
+    return solve(a, k, 0);
+}
+
+
+
+// MEMOIZATION - DP
+
 bool solve(int n, int k, vector<int>& a, vector<vector<int>>& dp) {
     if (k == 0) return true;  // Base case: if the sum is 0, return true
     if (n < 0) return false;  // Base case: no elements left to pick, return false

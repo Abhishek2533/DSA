@@ -30,6 +30,8 @@ digits[i] is a digit in the range ['2', '9'].
 
 // SOURCE CODE
 
+// METHOD - 1
+
 class Solution
 {
 private:
@@ -66,6 +68,38 @@ public:
         string mapping[10] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
         solve(digits, output, index, ans, mapping);
+        return ans;
+    }
+};
+
+
+
+// METHOD - 2
+
+class Solution {
+public:
+    void solve(string& digits, vector<string>& ans, int ind, string temp, unordered_map<char, string>& mpp) {
+        if(ind == digits.size()) return ans.push_back(temp);
+
+        for(char c : mpp.at(digits[ind])) solve(digits, ans, ind+1, temp+c, mpp);
+    }
+    vector<string> letterCombinations(string digits) {
+        vector<string> ans;
+
+        if(digits.empty()) return ans;
+        
+        unordered_map<char, string> mpp = {
+            {'2', "abc"},
+            {'3', "def"},
+            {'4', "ghi"},
+            {'5', "jkl"},
+            {'6', "mno"},
+            {'7', "pqrs"},
+            {'8', "tuv"},
+            {'9', "wxyz"}
+        };
+
+        solve(digits, ans, 0, "", mpp);
         return ans;
     }
 };
