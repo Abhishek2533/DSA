@@ -41,6 +41,10 @@ Constraints: 1 <= n, m <= 1000
 
 // SOURCE CODE
 
+
+
+// METHOD 1:
+
 class Solution
 {
 public:
@@ -56,5 +60,44 @@ public:
         }
 
         return num1 - num2;
+    }
+};
+
+
+
+
+
+
+
+// METHOD 2:
+
+class Solution {
+public:
+    int differenceOfSums(int n, int m) {
+        int total_sum = (n*(n+1))/2;
+        int sum=0;
+
+        for(int i=1; i<=n; i++) {
+            if(i%m==0) sum+=i;
+        }
+
+        return total_sum-(2*sum);
+    }
+};
+
+
+
+
+
+
+
+// METHOD 3:
+
+class Solution {
+public:
+    int differenceOfSums(int n, int m) {
+        int total_sum = (n*(n+1))/2;
+        int divisible_sum = m * (n / m) * (n / m + 1);
+        return total_sum-divisible_sum;
     }
 };
