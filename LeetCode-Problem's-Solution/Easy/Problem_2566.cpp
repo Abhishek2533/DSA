@@ -37,8 +37,10 @@ Constraints: 1 <= num <= 108
 // SOURCE CODE
 
 
+//METHOD 1: 2 Loop
+
 class Solution {
-public:
+    public:
     int minMaxDifference(int num) {
         string NUM=to_string(num);
         string maxi="", mini="";
@@ -59,6 +61,38 @@ public:
         for(int i=0;i<NUM.length();i++){
             if(NUM[0] == NUM[i]) mini += '0';
             else mini += NUM[i];
+        }
+
+        return stoi(maxi)-stoi(mini);
+    }
+};
+
+
+
+//METHOD 1: 1 Loop
+
+class Solution {
+public:
+    int minMaxDifference(int num) {
+        string NUM=to_string(num);
+        string maxi="", mini="";
+        char replaceMax=' ';
+
+        for(char ch : NUM) {
+            if(ch!='9') {
+                replaceMax=ch;
+                break;
+            }
+        }
+
+        char replaceMin = NUM[0];
+
+        for (char ch : NUM) {
+            if (ch == replaceMax) maxi += '9';
+            else maxi += ch;
+
+            if (ch == replaceMin) mini += '0';
+            else mini += ch;
         }
 
         return stoi(maxi)-stoi(mini);
